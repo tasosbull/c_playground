@@ -23,7 +23,6 @@ set(SOURCES
     src/map.c
     src/log.c
     src/ini.c
-    src/tgc.c
 )
 
 # Add an executable 

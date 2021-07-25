@@ -7,16 +7,10 @@
 #include "map.h"
 #include "log.h"
 #include "ini.h"
-#include "tgc.h"
 
 
 
-/***************   tcg    *************************/
-static tgc_t gc;
 
-static void test_tgc() {
-  void *memory = tgc_alloc(&gc, 1024);
-}
 
 /***************   ini    *************************/
 
@@ -121,6 +115,10 @@ void test_map()
 
 
 /***************   sqlite    *************************/
+
+static bool sqlite_create = false;
+static bool sqlite_update = false;
+
 static int sqlcallback(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
    for(i = 0; i < argc; i++) {
@@ -276,21 +274,21 @@ void test_sqlite_update(){
 int main (int    argc,  char **argv)
 {
 
-  tgc_start(&gc, &argc);
-
-  test_tgc();
-  
 
   test_log();
   test_map();
   test_ini();
 
-  //test_sqlite_create();
-  //test_sqlite_insert();
+// sqlite test
+  if(sqlite_create)
+  {
+    test_sqlite_create();
+    test_sqlite_insert();
+  }
   test_sqlite_select();
-  //test_sqlite_update();
+  if(sqlite_update)
+    test_sqlite_update();
 
-  tgc_stop(&gc);
 
   return 0;
 }
