@@ -1,0 +1,6 @@
+log
+https://github.com/rxi/log.c/tree/master/src
+map
+https://github.com/soywod/c-map
+ini
+https://github.com/benhoyt/inih
