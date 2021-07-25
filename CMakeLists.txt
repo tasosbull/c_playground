@@ -23,6 +23,7 @@ set(SOURCES
     src/map.c
     src/log.c
     src/ini.c
+    src/tgc.c
 )
 
 # Add an executable 
@@ -38,3 +39,9 @@ target_include_directories(cplay
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
 )
+find_package (SQLite3)
+if (SQLITE3_FOUND)
+  include_directories(${SQLITE3_INCLUDE_DIRS})
+  # target_link_libraries (cplay ${SQLITE3_LIBRARIES})
+  target_link_libraries (cplay sqlite3)
+endif (SQLITE3_FOUND)

@@ -1,6 +1,8 @@
 log
-https://github.com/rxi/log.c/tree/master/src
+https://github.com/rxi/log.c/
 map
 https://github.com/soywod/c-map
 ini
 https://github.com/benhoyt/inih
+tgc (garbage collector)
+https://github.com/orangeduck/tgc
