@@ -5,6 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include",
+                "/usr/include/gtk-3.0",
                 "/usr/include/gtk-3.0"
             ],
             "defines": [],
@@ -13,7 +14,6 @@
             "cppStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools",
-            
             "browse": {
                 "path": [
                     "${default}",
@@ -21,7 +21,6 @@
                     "${workspaceFolder}/src"
                 ]
             }
-            
         }
     ],
     "version": 4

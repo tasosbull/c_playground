@@ -23,6 +23,11 @@ set(SOURCES
     src/map.c
     src/log.c
     src/ini.c
+    src/test/gtk_hello.c
+    src/test/sqlite_hello.c
+    src/test/ini_hello.c
+    src/test/log_hello.c
+    src/test/map_hello.c
 )
 
 # Add an executable 
