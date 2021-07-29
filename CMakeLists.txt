@@ -29,6 +29,7 @@ set(SOURCES
     src/test/ini_hello.c
     src/test/log_hello.c
     src/test/map_hello.c
+    src/test/core_hello.c
 )
 
 # Add an executable 
