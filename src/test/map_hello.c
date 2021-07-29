@@ -4,9 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-void callback()
+void callback(int x, int y)
 {
-	printf("Hello World !\n");
+	printf("Hello World !%d  %d\n", x, y);
+	
 }
 
 int map_hello()
@@ -15,7 +16,7 @@ int map_hello()
 
 	char *strval;
 	int intval;
-	void (*funcval)();
+	void (*funcval)(int, int);
 	char* dynval = malloc(7);
 
     double* dblval = malloc(sizeof(double));
@@ -36,7 +37,7 @@ int map_hello()
 	printf("%s\n", strval);
 	printf("%d\n", intval);
     printf("%f\n", *((double* )mapGet("key 5", m)));
-	funcval();
+	funcval(4, 14);
 
 	mapClose(m);  
     return 0;
