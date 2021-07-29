@@ -11,7 +11,7 @@ void callback()
 
 int map_hello()
 {
-	Map* m;
+	map* m;
 
 	char *strval;
 	int intval;

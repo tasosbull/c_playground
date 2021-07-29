@@ -23,6 +23,7 @@ set(SOURCES
     src/map.c
     src/log.c
     src/ini.c
+    src/core.c
     src/test/gtk_hello.c
     src/test/sqlite_hello.c
     src/test/ini_hello.c
