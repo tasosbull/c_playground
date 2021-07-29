@@ -5,7 +5,6 @@
 
 typedef struct _core{
     map* env;
-    map* actions;
     const char* lastError;
 }core;
 
