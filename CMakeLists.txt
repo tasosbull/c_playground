@@ -12,11 +12,15 @@ set(SOURCES
     src/log.c
     src/ini.c
     src/core.c
+    src/d_field.c
+    src/d_fields.c
+    src/d_table.c
     src/test/sqlite_hello.c
     src/test/ini_hello.c
     src/test/log_hello.c
     src/test/map_hello.c
     src/test/core_hello.c
+    src/test/data_hello.c
 )
 
 # Add an executable 

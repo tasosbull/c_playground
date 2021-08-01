@@ -9,8 +9,10 @@ int sqlcallback(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
    for(i = 0; i < argc; i++) {
       printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+      
    }
    printf("\n");
+   
    return 0;
 }
 void test_sqlite_create()
@@ -19,7 +21,7 @@ void test_sqlite_create()
    char *zErrMsg = 0;
    int rc;
    char *sql;
-
+   
    /* Open database */
    rc = sqlite3_open("test.db", &db);
    
