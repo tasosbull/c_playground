@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-d_fields* d_fields_new(int _size)
+d_fields* d_fields_new(size_t _size)
 {
     d_fields* flds = (d_fields*)malloc(sizeof(d_fields) );
     flds->fields = (d_field*)malloc(sizeof(d_field) * _size);
@@ -21,7 +21,7 @@ d_field* d_fields_set(d_fields* _fields,
                         const char* _name, 
                         d_field_type _type, 
                         d_field_kind _kind, 
-                        int _size)
+                        size_t _size)
 {
     d_field* fld = _fields->fields + (_pos);
     fld->name = _name;

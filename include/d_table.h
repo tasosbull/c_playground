@@ -1,22 +1,26 @@
 #ifndef D_TABLE
 #define D_TABLE
 
-#define REC_CAPACITY 10
 #include "d_fields.h"
+
+
+typedef struct d_record
+{
+    char** data;
+
+}d_record;
 
 typedef struct d_table
 {
-    const char* name;
     int record_count;
-    int current_capacity;
     d_fields* fields;
-    char** data;
-
+    d_record* records;
 
 
 }d_table;
 
 d_table* d_table_create(d_fields* _fields);
-
+void d_table_add_record(d_table* _table, char** data);
+void d_table_free(d_table* _table);
 
 #endif /* D_TABLE */

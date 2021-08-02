@@ -1,6 +1,7 @@
 #ifndef D_FIELD
 #define D_FIELD
 
+#include <stddef.h>
 
 
 typedef enum d_field_kind
@@ -24,10 +25,10 @@ typedef struct d_field
     const char* name;
     d_field_type type;
     d_field_kind kind;
-    int size;
+    size_t size;
 
 }d_field;
 
-d_field* d_field_new(const char* _name, d_field_type _type, d_field_kind _kind, int _size);
+d_field* d_field_new(const char* _name, d_field_type _type, d_field_kind _kind, size_t _size);
 
 #endif /* D_FIELD */

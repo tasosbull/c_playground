@@ -15,7 +15,7 @@ int data_hello()
 
     int i;
     for(i = 0; i < 3; i++)
-        printf("NAME:%s SIZE:%d\n", d_fields_get(flds, i)->name, d_fields_get(flds, i)->size);
+        printf("NAME:%s SIZE:%d\n", d_fields_get(flds, i)->name, (int)d_fields_get(flds, i)->size);
     free(flds);
     return 0;
 }
