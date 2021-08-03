@@ -6,6 +6,7 @@
         "string_view": "c",
         "initializer_list": "c",
         "utility": "c",
-        "string": "c"
+        "string": "c",
+        "typeinfo": "c"
     }
 }

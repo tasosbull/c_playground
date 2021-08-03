@@ -14,20 +14,20 @@ d_table* d_table_create(d_fields* _fields)
 void d_record_free(d_table* table, d_record* rec)
 {
     int i;
-    char** data = rec->data;
-    for(i = table->fields->size - 1; i >= 0; ++i)
+    
+    for(i = table->fields->size - 1; i >= 0; --i)
     {
-        free(data[i]);
+        free(rec->data[i]);
     }
     free(rec->data);
-    free(rec);
+    
     
 }
 
 void d_table_free(d_table* table)
 {
     int i;
-    for(i = table->record_count - 1; i >= 0 ; ++i)
+    for(i = table->record_count - 1; i >= 0 ; --i)
         d_record_free(table, &table->records[i]);
     free(table->records);
     free(table);
@@ -45,7 +45,6 @@ void d_table_add_record(d_table* table, char** data)
     }
     d_record* rec = &(table->records[table->record_count]);
     rec->data = (char**)malloc((table->fields->size ) * sizeof(char*));
-    /*rec->data[table->fields->size] = NULL; */
     int i;
     size_t n = 0;
     for(i = 0; i < table->fields->size; ++i)

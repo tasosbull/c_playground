@@ -6,7 +6,7 @@
 typedef struct d_fields
 {
     size_t size;
-    d_field* fields; 
+    d_field* field; 
 }d_fields;
 
 d_fields* d_fields_new(size_t _size);
