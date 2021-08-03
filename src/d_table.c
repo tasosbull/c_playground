@@ -10,17 +10,28 @@ d_table* d_table_create(d_fields* _fields)
     tbl->record_count = 0;
 }
 
-void d_table_free(d_table* _table)
-{
-    
-    free(_table);
 
+void d_record_free(d_table* table, d_record* rec)
+{
+    int i;
+    char** data = rec->data;
+    for(i = 0; i < table->fields->size; ++i)
+    {
+        free(data[i]);
+    }
+    free(rec->data);
+    free(rec);
+    
 }
 
-void d_record_free(d_record* record)
+void d_table_free(d_table* table)
 {
+    int i;
+    for(i = 0; i < table->record_count; ++i)
+        d_record_free(table, &table->records[i]);
+    free(table->records);
+    free(table);
 
-    
 }
 
 void d_table_add_record(d_table* table, char** data)
