@@ -15,7 +15,7 @@ void d_record_free(d_table* table, d_record* rec)
 {
     int i;
     char** data = rec->data;
-    for(i = 0; i < table->fields->size; ++i)
+    for(i = table->fields->size - 1; i >= 0; ++i)
     {
         free(data[i]);
     }
@@ -27,7 +27,7 @@ void d_record_free(d_table* table, d_record* rec)
 void d_table_free(d_table* table)
 {
     int i;
-    for(i = 0; i < table->record_count; ++i)
+    for(i = table->record_count - 1; i >= 0 ; ++i)
         d_record_free(table, &table->records[i]);
     free(table->records);
     free(table);
@@ -44,16 +44,27 @@ void d_table_add_record(d_table* table, char** data)
         table->records = malloc(sizeof(d_record));
     }
     d_record* rec = &(table->records[table->record_count]);
-    char** new_data = rec->data;
-    new_data = (char**)malloc((table->fields->size + 1) * sizeof(char*));
-    new_data[table->fields->size] = NULL; 
+    rec->data = (char**)malloc((table->fields->size ) * sizeof(char*));
+    /*rec->data[table->fields->size] = NULL; */
     int i;
     size_t n = 0;
     for(i = 0; i < table->fields->size; ++i)
     {
-        n = strlen(data[i]) + 1;
-        new_data[i] = (char*)malloc(n);
-        strcpy(new_data[i],data[i]);
+        if(data[i])
+        {
+            n = strlen(data[i]) + 1;
+            rec->data[i] = (char*)malloc(n);
+            memset(rec->data[i], '\0', n);
+            strncpy(rec->data[i],data[i], n);
+        }
+        else
+        {
+
+            n = strlen("NULL") + 1;
+            rec->data[i] = (char*)malloc(n);
+            memset(rec->data[i], '\0', n);
+            strncpy(rec->data[i],"NULL", n);
+        }
     }
     table->record_count ++;
 }
