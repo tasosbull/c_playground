@@ -32,13 +32,7 @@ d_field* d_fields_set(d_fields* _fields,
 
 void d_fields_free(d_fields* _fields)
 {
-    int i;
-    for(i = _fields->size - 1; i >= 0; i--)
-    {
-        d_field* field = &_fields->field[i];
-        
-        free(field);
-    }
+    free(_fields->field);
     free(_fields);
     
 }
