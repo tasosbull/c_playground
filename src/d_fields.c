@@ -34,5 +34,4 @@ void d_fields_free(d_fields* _fields)
 {
     free(_fields->field);
     free(_fields);
-    
 }

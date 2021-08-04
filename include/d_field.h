@@ -26,7 +26,6 @@ typedef struct d_field
     d_field_type type;
     d_field_kind kind;
     size_t size;
-
 }d_field;
 
 d_field* d_field_new(const char* _name, d_field_type _type, d_field_kind _kind, size_t _size);

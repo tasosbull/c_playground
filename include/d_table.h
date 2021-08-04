@@ -7,7 +7,6 @@
 typedef struct d_record
 {
     char** data;
-
 }d_record;
 
 typedef struct d_table
@@ -15,8 +14,6 @@ typedef struct d_table
     int record_count;
     d_fields* fields;
     d_record* records;
-
-
 }d_table;
 
 d_table* d_table_create(d_fields* _fields);

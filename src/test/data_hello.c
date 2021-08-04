@@ -8,9 +8,11 @@
 #include <string.h>
 #include <sqlite3.h> 
 
-static d_table* table;
+d_table* table;
 
 int sqlcallback2(void *NotUsed, int argc, char **argv, char **azColName) {
+    /*test null*/
+    /*argv[2] = 0;*/
     d_table_add_record(table, argv);
     return 0;
 }
@@ -61,8 +63,7 @@ int data_hello()
 
     sqlite_select();
 
-    int i;
-    int j;
+    int i, j;
     for(i = 0; i < table->record_count - 1; i++)
     {
         for(j = 0; j < table->fields->size; j++)
@@ -76,13 +77,5 @@ int data_hello()
     }
     d_table_free(table);
     d_fields_free(flds);
-    return 0;
-    
-
-/*
-
-
-    free(flds);
-*/
     return 0;
 }
