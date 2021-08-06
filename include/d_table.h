@@ -2,12 +2,9 @@
 #define D_TABLE
 
 #include "d_fields.h"
+#include "d_record.h"
 
 
-typedef struct d_record
-{
-    char** data;
-}d_record;
 
 typedef struct d_table
 {

@@ -15,6 +15,7 @@ set(SOURCES
     src/d_field.c
     src/d_fields.c
     src/d_table.c
+    src/d_record.c
     src/test/sqlite_hello.c
     src/test/ini_hello.c
     src/test/log_hello.c

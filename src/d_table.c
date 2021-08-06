@@ -41,22 +41,6 @@ void d_table_add_record(d_table* table, char** data)
     }
     d_record* rec = &(table->records[table->record_count]);
     rec->data = (char**)malloc((table->fields->size ) * sizeof(char*));
-    int i;
-    size_t n = 0;
-    for(i = 0; i < table->fields->size; ++i)
-    {
-        if(data[i])
-        {
-            n = strlen(data[i]) + 1;
-            rec->data[i] = (char*)calloc(n, sizeof(char));
-            strncpy(rec->data[i],data[i], n);
-        }
-        else
-        {
-            n = strlen("NULL") + 1;
-            rec->data[i] = (char*)calloc(n, sizeof(char));
-            strncpy(rec->data[i],"NULL", n);
-        }
-    }
+    d_record_assign(rec, data, table->fields->size);
     table->record_count ++;
 }
