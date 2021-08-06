@@ -63,18 +63,27 @@ int data_hello()
 
     sqlite_select();
 
-    int i, j;
-    for(i = 0; i < table->record_count - 1; i++)
-    {
-        for(j = 0; j < table->fields->size; j++)
-        {
+   d_table_first(table);
+   int i = 0;
+   while(!d_table_eof(table))
+   {
+      d_record* rec = d_table_get_record(table);
+      int j; 
+      
+      for(j = 0; j < table->fields->size; j++)
+      {
             d_fields * fields = table->fields;
             const char * field_name = fields->field[j].name;
-            char * data = table->records[i].data[j];
+            char * data = rec->data[j];
             
             printf("rec %d: field %s value: %s\n", i, field_name, data);
-        }
-    }
+            
+      }
+      d_table_next(table);
+      i++;
+   }
+
+ 
     d_table_free(table);
     d_fields_free(flds);
     return 0;

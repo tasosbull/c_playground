@@ -8,6 +8,7 @@ d_table* d_table_create(d_fields* _fields)
     tbl->fields = _fields;
     tbl->records = 0;
     tbl->record_count = 0;
+    tbl->idx = -1;
 }
 
 
@@ -43,4 +44,32 @@ void d_table_add_record(d_table* table, char** data)
     rec->data = (char**)malloc((table->fields->size ) * sizeof(char*));
     d_record_assign(rec, data, table->fields->size);
     table->record_count ++;
+}
+
+int d_table_first(d_table* table)
+{
+    if(table->record_count > 0)
+        table->idx = 0;
+    else
+        table->idx = -1;
+}
+
+int d_table_eof(d_table* table)
+{
+    return table->idx >= table->record_count;
+}
+
+void d_table_next(d_table* table)
+{
+    table->idx++;
+}
+
+d_record* d_table_get_record(d_table* table)
+{
+    return &(table->records[table->idx]);
+}
+
+int d_table_record_count(d_table* table)
+{
+    return table->record_count;
 }
